@@ -1,6 +1,6 @@
 class Weather {
 	constructor(city) {
-		this.key = '1948d3c988bdc7ab86efad6356810ddc3';
+		this.key = '948d3c988bdc7ab86efad6356810ddc3';
 		this.city = city;
 	}
 
@@ -12,7 +12,5 @@ class Weather {
 
 	changeCity(city) {
 		this.city = city;
-		document.getElementById('city-name').value = "";
-		console.log("click")
 	}
 }

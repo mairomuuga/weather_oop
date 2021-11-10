@@ -1,24 +1,27 @@
 const ls = new LS();
 
-const weatherLocation = ls.getLocationData();
-console.log(weatherLocation)
+const weather = new Weather("Tallinn");
 
-const weather = new Weather(weatherLocation);
 const ui = new UI();
 
-const city = document.getElementById('submit-btn');
-const input = document.querySelector('input').value;
+const form = document.querySelector("form");
+form.addEventListener("submit", newCity);
 
-console.log(city);
-
-city.addEventListener('click', weather.changeCity());
+function newCity(){
+	const city = document.querySelector("#change-city").value;
+	weather.changeCity(city);
+	//ls.setLocationData(city);
+	getWeather();
+	event.preventDefault();
+	document.querySelector("#change-city").value = ""
+}
 
 function getWeather() {
 	weather.getWeather()
 	.then(data => {
 		ui.drawWeather(data)
 	})
-	.catch(error => console.log(error));
+	.catch(error => console.log(error))
 }
 
-document.addEventListener('DOMContentLoaded', getWeather);
+getWeather()
